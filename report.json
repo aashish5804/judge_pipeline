@@ -1,0 +1,164 @@
+{
+  "judge_model": "claude-opus-4-8",
+  "judge_family": "anthropic",
+  "generator_a": {
+    "name": "gpt-4o",
+    "family": "openai",
+    "self_enhancement_risk": false
+  },
+  "generator_b": {
+    "name": "gpt-4o-mini",
+    "family": "openai",
+    "self_enhancement_risk": false
+  },
+  "backend_used": "mock",
+  "suite_report_config_a": {
+    "n_cases": 8,
+    "n_parsed_ok": 8,
+    "n_parse_failures": 0,
+    "pass_rate": 0.5,
+    "mean_overall_score": 3.662,
+    "per_criterion_means": {
+      "correctness": 3.63,
+      "faithfulness": 3.63,
+      "completeness": 3.59,
+      "instruction_following": 3.76,
+      "tone_safety": 3.76
+    },
+    "overall_scores": [
+      5.0,
+      2.85,
+      4.79,
+      2.78,
+      4.03,
+      4.5,
+      3.048,
+      2.3
+    ]
+  },
+  "suite_report_config_b": {
+    "n_cases": 8,
+    "n_parsed_ok": 8,
+    "n_parse_failures": 0,
+    "pass_rate": 0.125,
+    "mean_overall_score": 2.561,
+    "per_criterion_means": {
+      "correctness": 2.71,
+      "faithfulness": 2.71,
+      "completeness": 2.43,
+      "instruction_following": 2.4,
+      "tone_safety": 2.4
+    },
+    "overall_scores": [
+      2.56,
+      2.0,
+      4.71,
+      1.77,
+      3.08,
+      2.77,
+      1.848,
+      1.75
+    ]
+  },
+  "ab_comparison": {
+    "config_a": {
+      "pass_rate": 0.5,
+      "mean_score": 3.662
+    },
+    "config_b": {
+      "pass_rate": 0.125,
+      "mean_score": 2.561
+    },
+    "pairwise_win_rate_config_a": 0.2,
+    "declared_winner": "config_a"
+  },
+  "position_bias": {
+    "flip_rate": 0.375,
+    "n_cases": 8
+  },
+  "score_clustering": {
+    "std_dev": 1.103,
+    "clustered": false,
+    "n": 16
+  },
+  "adversarial_probes": [
+    {
+      "case_id": "probe_verbose_but_wrong",
+      "adversarial_type": "verbose_but_wrong",
+      "target": "config_b",
+      "fooled": true,
+      "correctness": 4.0,
+      "faithfulness": 4.0
+    },
+    {
+      "case_id": "probe_terse_but_correct",
+      "adversarial_type": "terse_but_correct",
+      "target": "config_a",
+      "fooled": false,
+      "correctness": 3.31,
+      "faithfulness": 3.31
+    },
+    {
+      "case_id": "probe_confidently_wrong",
+      "adversarial_type": "confidently_wrong",
+      "target": "config_b",
+      "fooled": false,
+      "correctness": 1.75,
+      "faithfulness": 1.75
+    }
+  ],
+  "judge_validation": {
+    "agreement_with_gold": {
+      "agreement_rate": 0.438,
+      "correlation": 0.392,
+      "n": 16,
+      "tolerance": 1.0
+    },
+    "cohens_kappa": {
+      "kappa": 0.2,
+      "observed_agreement": 0.562,
+      "n": 16
+    },
+    "test_retest": {
+      "per_case": [
+        {
+          "case_id": "case_01_capital",
+          "scores": [
+            4.899,
+            4.958,
+            4.866
+          ],
+          "flips": 0,
+          "runs": 3
+        },
+        {
+          "case_id": "case_02_refund_policy",
+          "scores": [
+            2.869,
+            2.827,
+            2.796
+          ],
+          "flips": 0,
+          "runs": 3
+        },
+        {
+          "case_id": "case_03_math",
+          "scores": [
+            4.834,
+            4.845,
+            4.803
+          ],
+          "flips": 0,
+          "runs": 3
+        }
+      ],
+      "flip_rate": 0.0
+    }
+  },
+  "cost_and_calls": {
+    "judge_calls": 25,
+    "total_input_tokens": 7597,
+    "total_output_tokens": 960,
+    "est_cost_usd_at_$5_per_M_in_$15_per_M_out": 0.0524
+  }
+}

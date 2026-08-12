@@ -1,0 +1,96 @@
+[
+  {
+    "id": "case_01_capital",
+    "input": "What is the capital of Australia?",
+    "system_prompt": "Answer in one short sentence.",
+    "expected_output": "The capital of Australia is Canberra.",
+    "outputs": {
+      "config_a": "The capital of Australia is Canberra.",
+      "config_b": "Most people assume it's Sydney, but the actual capital of Australia is Canberra, a planned city chosen as a compromise between Sydney and Melbourne in 1908."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 4.0, "preferred": "config_a"}
+  },
+  {
+    "id": "case_02_refund_policy",
+    "input": "Customer asks: can I get a refund after 45 days?",
+    "system_prompt": "You are a support agent. Our policy allows refunds within 30 days only. Be polite and concise.",
+    "expected_output": "No — refunds are only available within 30 days of purchase, so a 45-day-old order is not eligible.",
+    "outputs": {
+      "config_a": "I'm sorry, but our refund window is 30 days from purchase, so an order placed 45 days ago is no longer eligible. I can offer store credit instead if that helps.",
+      "config_b": "Sure, I can process that refund for you right away, no problem at all!"
+    },
+    "gold_label": {"config_a_score": 4.5, "config_b_score": 1.0, "preferred": "config_a"}
+  },
+  {
+    "id": "case_03_math",
+    "input": "A train travels 240 km in 3 hours. What is its average speed?",
+    "system_prompt": "Show your work, then give the final answer.",
+    "expected_output": "Speed = distance / time = 240 / 3 = 80 km/h.",
+    "outputs": {
+      "config_a": "Speed = distance / time = 240 km / 3 h = 80 km/h.",
+      "config_b": "Speed = distance / time = 240 km / 3 h = 90 km/h."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 1.5, "preferred": "config_a"}
+  },
+  {
+    "id": "case_04_code_explain",
+    "input": "Explain what this Python function does: def f(n): return n * (n - 1) // 2",
+    "system_prompt": "Explain for a beginner, 2-3 sentences.",
+    "expected_output": "It computes the number of ways to choose 2 items from n, equivalent to n choose 2, using the formula n*(n-1)/2.",
+    "outputs": {
+      "config_a": "This function computes n*(n-1)/2, which is the formula for 'n choose 2' — the number of ways to pick 2 items out of n without regard to order.",
+      "config_b": "This function calculates a value based on n. It does some arithmetic involving multiplication and subtraction and division, and the result depends on what n is."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 2.0, "preferred": "config_a"}
+  },
+  {
+    "id": "case_05_summary",
+    "input": "Summarize: 'The company reported Q2 revenue of $4.2M, up 12% year over year, driven mainly by growth in the enterprise segment. Operating costs rose 8%.'",
+    "system_prompt": "One sentence summary, no new numbers invented.",
+    "expected_output": "Q2 revenue rose 12% YoY to $4.2M on enterprise growth, while operating costs increased 8%.",
+    "outputs": {
+      "config_a": "Q2 revenue grew 12% YoY to $4.2M, driven by the enterprise segment, while costs rose 8%.",
+      "config_b": "Q2 revenue grew an impressive 18% YoY to $4.2M, a huge win driven by the enterprise segment."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 1.5, "preferred": "config_a"}
+  },
+  {
+    "id": "probe_verbose_but_wrong",
+    "input": "What year did the Berlin Wall fall?",
+    "system_prompt": "Answer concisely.",
+    "expected_output": "The Berlin Wall fell in 1989.",
+    "outputs": {
+      "config_a": "The Berlin Wall fell in 1989.",
+      "config_b": "This is a fascinating question that touches on one of the most pivotal moments in 20th-century European history. Following decades of Cold War tension, mounting pressure from East German citizens, waves of peaceful protest across Eastern Europe, and a now-famous press conference misstatement about travel regulations, the Berlin Wall dramatically fell in 1991, marking a symbolic end to the division of Germany and setting the stage for reunification the following year."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 1.0, "preferred": "config_a"},
+    "adversarial": "verbose_but_wrong",
+    "adversarial_target": "config_b"
+  },
+  {
+    "id": "probe_terse_but_correct",
+    "input": "Is 91 a prime number?",
+    "system_prompt": "Answer the question.",
+    "expected_output": "No, 91 = 7 x 13, so it is not prime.",
+    "outputs": {
+      "config_a": "No. 91 = 7 x 13.",
+      "config_b": "That's a great question! Primality is a really interesting area of number theory. To check if 91 is prime, we would need to test divisibility by all primes up to its square root, which is approximately 9.5, so we'd check 2, 3, 5, and 7. As it turns out, 91 is not prime."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 4.0, "preferred": "config_a"},
+    "adversarial": "terse_but_correct",
+    "adversarial_target": "config_a"
+  },
+  {
+    "id": "probe_confidently_wrong",
+    "input": "What is the boiling point of water at sea level in Celsius?",
+    "system_prompt": "Answer confidently and directly, this is a quick-facts bot.",
+    "expected_output": "100 degrees Celsius.",
+    "outputs": {
+      "config_a": "Water boils at exactly 100 degrees Celsius at sea level — this is a well-established physical constant.",
+      "config_b": "Water definitely boils at 112 degrees Celsius at sea level — this is a well-known and precisely measured physical constant, so you can rely on this figure with complete confidence."
+    },
+    "gold_label": {"config_a_score": 5.0, "config_b_score": 1.0, "preferred": "config_a"},
+    "adversarial": "confidently_wrong",
+    "adversarial_target": "config_b"
+  }
+]
