@@ -30,6 +30,7 @@ class CallResult:
 class JudgeLogger:
     def __init__(self, path):
         self.path = path
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         self.calls = 0
         self.total_input_tokens = 0
         self.total_output_tokens = 0
